@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@apollo/client@^3.3.16":
-  "integrity" "sha512-EPTiNpmiU6/vvxpl4lXWQDqS3YddweC1sh/ewCuVP9IK0+xlVGb5vR1yhM/7T3PIJqwz52dGpZyJskmbTfENfQ=="
-  "resolved" "https://registry.npmjs.org/@apollo/client/-/client-3.3.16.tgz"
-  "version" "3.3.16"
+"@apollo/client@^3.3.17":
+  "integrity" "sha512-hPZ52Qhp/QFb5BhLdoY3EVckRwHX+YhbjbZNN1cgEjHmhgBesWzQtE+euaBWR7nyYGl4rhkzheX14rotfON40Q=="
+  "resolved" "https://registry.npmjs.org/@apollo/client/-/client-3.3.17.tgz"
+  "version" "3.3.17"
   dependencies:
     "@graphql-typed-document-node/core" "^3.0.0"
     "@types/zen-observable" "^0.8.0"
@@ -14,7 +14,7 @@
     "fast-json-stable-stringify" "^2.0.0"
     "graphql-tag" "^2.12.0"
     "hoist-non-react-statics" "^3.3.2"
-    "optimism" "^0.15.0"
+    "optimism" "^0.16.0"
     "prop-types" "^15.7.2"
     "symbol-observable" "^2.0.0"
     "ts-invariant" "^0.7.0"
@@ -7943,10 +7943,10 @@
   dependencies:
     "is-wsl" "^1.1.0"
 
-"optimism@^0.15.0":
-  "integrity" "sha512-KLKl3Kb7hH++s9ewRcBhmfpXgXF0xQ+JZ3xQFuPjnoT6ib2TDmYyVkKENmGxivsN2G3VRxpXuauCkB4GYOhtPw=="
-  "resolved" "https://registry.npmjs.org/optimism/-/optimism-0.15.0.tgz"
-  "version" "0.15.0"
+"optimism@^0.16.0":
+  "integrity" "sha512-64i+Uw3otrndfq5kaoGNoY7pvOhSsjFEN4bdEFh80MWVk/dbgJfMv7VFDeCT8LxNAlEVhQmdVEbfE7X2nWNIIg=="
+  "resolved" "https://registry.npmjs.org/optimism/-/optimism-0.16.1.tgz"
+  "version" "0.16.1"
   dependencies:
     "@wry/context" "^0.6.0"
     "@wry/trie" "^0.3.0"
