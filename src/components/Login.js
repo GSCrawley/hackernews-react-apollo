@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import { useMutation, gql } from '@apollo/client';
 import { AUTH_TOKEN } from '../constants';
 
+
 const SIGNUP_MUTATION = gql`
   mutation SignupMutation(
     $email: String!
@@ -12,12 +13,12 @@ const SIGNUP_MUTATION = gql`
     signup(
       email: $email
       password: $password
-      name: $name                                                                                                 
+      name: $name
     ) {
       token
     }
   }
-`                                                                                     
+`;
 
 const LOGIN_MUTATION = gql`
   mutation LoginMutation(
@@ -30,7 +31,6 @@ const LOGIN_MUTATION = gql`
   }
 `;
 
-
 const Login = () => {
   const history = useHistory();
   const [formState, setFormState] = useState({
@@ -38,6 +38,30 @@ const Login = () => {
     email: '',
     password: '',
     name: ''
+  });
+
+  const [login] = useMutation(LOGIN_MUTATION, {
+    variables: {
+      email: formState.email,
+      password: formState.password
+    },
+    onCompleted: ({ login }) => {
+      localStorage.setItem(AUTH_TOKEN, login.token);
+      history.push('/');
+    }
+  });
+  
+  const [signup] = useMutation(SIGNUP_MUTATION, {
+    variables: {
+      name: formState.name,
+      email: formState.email,
+      password: formState.password
+    },
+    onCompleted: ({ signup }) => {
+      localStorage.setItem(AUTH_TOKEN, signup.token);
+      history.push('/');
+      
+    }
   });
 
   return (
@@ -84,25 +108,25 @@ const Login = () => {
       </div>
       <div className="flex mt3">
         <button
-          className="pointer mr2 button"
-          onClick={formState.login ? login : signup}
-          >
-          {formState.login ? 'login' : 'create account'}
+            className="pointer mr2 button"
+            onClick={formState.login ? login : signup}
+        >
+            {formState.login ? 'login' : 'create account'}
         </button>
         <button
-          className="pointer button"
-          onClick={(e) =>
+            className="pointer button"
+            onClick={(e) =>
             setFormState({
-              ...formState,
-              login: !formState.login
+                ...formState,
+                login: !formState.login
             })
-          }
+            }
         >
-          {formState.login
+            {formState.login
             ? 'need to create an account?'
             : 'already have an account?'}
         </button>
-      </div>
+        </div>
     </div>
   );
 };
