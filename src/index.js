@@ -6,7 +6,7 @@ import App from './components/App';
 // import * as serviceWorker from './serviceWorker';
 import reportWebVitals from './reportWebVitals';
 import { setContext } from '@apollo/client/link/context';
-import { AUTH_TOKEN } from '../constants';
+import { AUTH_TOKEN } from './constants';
 import {
   ApolloProvider,
   ApolloClient,

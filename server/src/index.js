@@ -49,7 +49,7 @@ const server = new ApolloServer({
           prisma,
           userId: getUserId(
             null,
-            connectionParams.authToken
+            connectionParams.authTokenee
           )
         };
       } else {
