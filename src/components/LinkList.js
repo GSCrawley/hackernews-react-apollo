@@ -4,6 +4,53 @@ import { useQuery, gql } from '@apollo/client';
 import {  LINKS_PER_PAGE } from '../constants';
 import { useHistory } from 'react-router';
 
+const NEW_VOTES_SUBSCRIPTION = gql`
+  subscription {
+    newVote {
+      id
+      link {
+        id
+        url
+        description
+        createdAt
+        postedBy {
+          id
+          name
+        }
+        votes {
+          id
+          user {
+            id
+          }
+        }
+      }
+      user {
+        id
+      }
+    }
+  }
+`;
+
+const NEW_LINKS_SUBSCRIPTION = gql`
+  subscription {
+    newLink {
+      id
+      url
+      description
+      createdAt
+      postedBy {
+        id
+        name
+      }
+      votes {
+        id
+        user {
+          id
+        }
+      }
+    }
+  }
+`;
 export const FEED_QUERY = gql`
   query FeedQuery(
     $take: Int
@@ -35,53 +82,7 @@ export const FEED_QUERY = gql`
 
 
 
-const NEW_LINKS_SUBSCRIPTION = gql`
-  subscription {
-    newLink {
-      id
-      url
-      description
-      createdAt
-      postedBy {
-        id
-        name
-      }
-      votes {
-        id
-        user {
-          id
-        }
-      }
-    }
-  }
-`;
 
-const NEW_VOTES_SUBSCRIPTION = gql`
-  subscription {
-    newVote {
-      id
-      link {
-        id
-        url
-        description
-        createdAt
-        postedBy {
-          id
-          name
-        }
-        votes {
-          id
-          user {
-            id
-          }
-        }
-      }
-      user {
-        id
-      }
-    }
-  }
-`;
 
 const getQueryVariables = (isNewPage, page) => {
     const skip = isNewPage ? (page - 1) * LINKS_PER_PAGE : 0;
@@ -114,7 +115,7 @@ const LinkList = () => {
     });
     
     subscribeToMore({
-        document: NEW_LINKS_SUBSCRIPTION,
+        document: NEW_LINKS_SUBSCRIPTION, 
         document: NEW_VOTES_SUBSCRIPTION,
         updateQuery: (prev, { subscriptionData }) => {
           if (!subscriptionData.data) return prev;
