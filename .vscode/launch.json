@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "pwa-chrome",
+            "name": "http://LINKS_PER_PAGE",
+            "request": "launch",
+            "url": "http://LINKS_PER_PAGE"
+        }
+    ]
+}
