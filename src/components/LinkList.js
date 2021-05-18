@@ -115,8 +115,7 @@ const LinkList = () => {
     });
     
     subscribeToMore({
-        document: NEW_LINKS_SUBSCRIPTION, 
-        document: NEW_VOTES_SUBSCRIPTION,
+        document: NEW_LINKS_SUBSCRIPTION, NEW_VOTES_SUBSCRIPTION,
         updateQuery: (prev, { subscriptionData }) => {
           if (!subscriptionData.data) return prev;
           const newLink = subscriptionData.data.newLink;
@@ -196,4 +195,4 @@ const LinkList = () => {
         );
   };
   
-  export default LinkList;
+export default LinkList;
